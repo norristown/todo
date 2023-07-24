@@ -24,14 +24,13 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: red;
-    color: white;
+    background-color: pink;
     text-align: center;
 }
 
 .navbar {
     display: flex;
-    padding-left: 2rem;
+    padding: 0 2rem;
     grid-column: 1 / 7;
 }
 
