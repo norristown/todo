@@ -7,7 +7,7 @@ body {
     margin: 0;
     display: grid;
     grid-template-columns: min-content auto;
-    
+
 }
 
 .content {
@@ -77,4 +77,59 @@ body {
 
 .header-center {
     padding: 0;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 6rem;
+    border-radius: 5px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    width: 550px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1.2rem;
+    right: 2rem;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.hidden {
+    display: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+input:focus {
+    outline: none;
+    border: 2px solid #59a1ff;
+    box-shadow: 0px 15px 10px -15px #111;
+}
+
+h2 {
+    text-align: center;
 }

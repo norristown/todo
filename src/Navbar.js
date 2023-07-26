@@ -1,5 +1,6 @@
 import { format } from "date-fns";
-import Sidebar from "./sidebar";
+import Sidebar from "./Sidebar";
+
 
 export default class Navbar {
     constructor(text, icon, className) {
@@ -59,9 +60,6 @@ export default class Navbar {
         const today = new Sidebar
         headerCenter.appendChild(today.createDiv('date', this.createDate()))
 
-        const addProjectSelect = document.querySelector('.li-container-2')
-        addProjectSelect.addEventListener('click', this.addProjectClick)
-
     }
 
     createIcon(iconPath) {
@@ -69,42 +67,6 @@ export default class Navbar {
         const picture = document.createElement('img')
         picture.src = img
         return img
-    }
-
-    //Create Form
-    addProjectClick() {
-        const content = document.querySelector('.content')
-        const dialog = document.createElement('dialog')
-        dialog.classList.add('modal')
-        content.appendChild(dialog)
-
-        const h2 = document.createElement('h2')
-        h2.textContent = 'Title'
-        dialog.appendChild(h2)
-
-        const closeButton = document.createElement('button')
-        closeButton.textContent = 'X'
-        closeButton.classList.add('close-modal')
-        dialog.appendChild(closeButton)
-        closeButton.addEventListener('click', () => dialog.close())
-
-        const form = document.createElement('form')
-        form.setAttribute('method', 'dialog')
-
-        dialog.appendChild(form)
-
-        const formInputs = ['Title', 'Description', 'Due Date', 'Priority']
-
-        for (let i = 0; i < formInputs.length; i++) {
-            const label = document.createElement('label')
-            label.textContent = formInputs[i]
-            form.appendChild(label)
-            const input = document.createElement('input')
-            form.appendChild(input)
-            form.appendChild(document.createElement('br'))
-        }
-
-        dialog.showModal()
     }
 
     createDate() {
