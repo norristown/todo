@@ -58,7 +58,7 @@ export default class Navbar {
         }
 
         const today = new Sidebar
-        headerCenter.appendChild(today.createDiv('date', this.createDate()))
+        headerCenter.appendChild(today.createDiv('date', `Today is ${this.createDate()}`))
 
     }
 

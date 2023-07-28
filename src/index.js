@@ -8,14 +8,18 @@ import Project from './Project'
 const page = new Navbar
 const sidebar = new Sidebar
 
-page.createNavbar()
-sidebar.createSidebar()
 
+sidebar.createSidebar()
+page.createNavbar()
 const project = new Project
 const addClick = document.querySelector('.li-container-2')
 addClick.addEventListener('click', project.addProjectClick)
 
-
+const content = document.querySelector('.content')
+const homeText = document.createElement('h1')
+homeText.textContent = 'Click Add Project To Get Started'
+homeText.classList.add('home-text')
+content.appendChild(homeText)
 
 
 

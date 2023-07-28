@@ -9,6 +9,9 @@ class GlobalArray {
     Get() {
         return this.array;
     }
+    Pop() {
+        this.array.pop()
+    }
 }
 
 let globalArray = new GlobalArray()

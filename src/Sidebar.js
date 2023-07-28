@@ -8,9 +8,10 @@ export default class Sidebar {
         this.element.id = 'side-container'
         this.element.innerHTML = `
 
-            <img class="icon" src="${icon}">
+            
             <div class="navText">
-                ${text}
+            <img class="icon" src="${icon}">
+               <p> ${text} </p>
             </div>
         `
     }
@@ -38,9 +39,7 @@ export default class Sidebar {
             }
         ];
 
-        const sidebarContainer = this.createDiv('sidebar-container', '')
-        const body = document.querySelector('body')
-        body.appendChild(sidebarContainer)
+        const sidebarContainer = document.querySelector('.sidebar-container')
 
         for (let i = 0; i < sidebarContent.length; i++) {
             const sidebarItem = new Sidebar(sidebarContent[i].text, sidebarContent[i].icon, `sidebar-item-${i}`)

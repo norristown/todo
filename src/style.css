@@ -7,15 +7,20 @@ body {
     margin: 0;
     display: grid;
     grid-template-columns: min-content auto;
+    grid-template-rows: min-content;
+    height: 100vh;
 
 }
 
 .content {
     display: flex;
+    flex-wrap: wrap;
+    padding-right: 200px;
+    justify-content: center;
     gap: 1rem;
     grid-column: 2 / 7;
     grid-row: 2;
-    height: 100vh;
+
     background-color: silver;
 }
 
@@ -30,7 +35,7 @@ body {
 
 .navbar {
     display: flex;
-    padding: 0 2rem;
+    padding: 0 1rem;
     grid-column: 1 / 7;
 }
 
@@ -60,17 +65,19 @@ body {
 #li-container,
 #side-container {
     display: flex;
-    align-items: center;
+
     cursor: pointer;
     gap: .5rem;
 }
 
 #side-container {
     margin-bottom: 2rem;
+    flex-direction: column;
 }
 
 .sidebar-container {
-    padding-left: 2rem;
+    width: 200px;
+    padding: 2rem 0 0 1rem;
     padding-top: 2rem;
     grid-column: 1;
 }
@@ -133,3 +140,21 @@ input:focus {
 h2 {
     text-align: center;
 }
+
+.card {
+    height: 600px;
+    width: 400px;
+    background-color: #d4d4d4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3rem;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+
+  .navText {
+    display: flex;
+    align-items: center;
+  }

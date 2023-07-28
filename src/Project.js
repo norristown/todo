@@ -1,6 +1,8 @@
-
+import Dom from './Dom'
 const globalArray = require('./GlobalArray')
-const createCard = require('./Card')
+// const createCard = require('./Card')
+const Card = require('./Card')
+
 export default class Project {
 
 
@@ -29,7 +31,7 @@ export default class Project {
 
         modalWindow.appendChild(form)
 
-        const formInputs = ['Title: ', 'Description: ', 'Due Date: ', 'Priority: ']
+        const formInputs = ['Category: ', 'Task: ', 'Due Date: ', 'Priority: ']
 
         for (let i = 0; i < formInputs.length; i++) {
             const label = document.createElement('label')
@@ -44,24 +46,23 @@ export default class Project {
         const submit = document.createElement('input')
         submit.value = 'Create New Project'
         submit.setAttribute('type', 'submit')
-
         form.appendChild(submit)
+        
         //Submit Data
-        submit.addEventListener('click', (e) => {
+        form.addEventListener('submit', (e) => {
             e.preventDefault()
-
-            for(let i = 0; i < formInputs.length; i++) {
-                globalArray.Add(document.querySelector(`.input-${i}`).value)
-            }
-            
-
-
-            // const [title, description, dueDate, priority] = x.projectArray
-            // const obj = { title, description, dueDate, priority }
-            console.log(globalArray.Get(), 'get', globalArray.Get().length) 
-            
-            createCard.create()
+            const card = new Card(
+                document.querySelector('.input-0').value,
+                document.querySelector('.input-1').value,
+                document.querySelector('.input-2').value,
+                document.querySelector('.input-3').value
+            )
+            card.create()
+            const x = new Dom
+            x.domStuff()
         })
 
     }
+
+
 }
