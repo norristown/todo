@@ -13,25 +13,30 @@ class CreateCard {
             'Due Date': this.dueDate,
             'Priority': this.priority
         }
-        globalArray.Add(this.obj)
+        
+        globalArray.add(this.obj)
 
     }
 
     create() {
         const content = document.querySelector('.content');
-        console.log('click', globalArray.Get())
+        console.log('click', globalArray.get())
         content.innerHTML = '';
-        for (let i = 0; i < globalArray.Get().length; i++) {
+        for (let i = 0; i < globalArray.get().length; i++) {
             //Need Object not Array
             content.innerHTML +=
                 `<div class="card">
-                <div class="title">Title: ${globalArray.Get()[i].Title}</div>
-                <div class="description">Task: ${globalArray.Get()[i].Description}</div>
-                <div class="due-date">Due Date: ${globalArray.Get()[i]['Due Date']}</div>
-                <div class="priority">Priority: ${globalArray.Get()[i].Priority}</div>
+                    <div class="title">
+                        <p><strong>Category</strong>: ${globalArray.get()[i].Title}</p>
+                    </div>
+                    <div class="task">
+                        <p><strong>Tasks</strong>: ${globalArray.get()[i].Description} at ${globalArray.get()[i]['Due Date']}</p>
+                    </div>
+
+                <div class="priority"><strong>Priority</strong>: ${globalArray.get()[i].Priority}</div>
                 <div class="btnContainer">
-                    <button class="finishedReading">Add Task/button>
-                    <button class="delBtn">Delete</button>
+                    <button class="add" id="${globalArray.get()[i].Title}">Add Task</button>
+                    <button class="delete">Delete</button>
                 </div>
              </div>`;
         }

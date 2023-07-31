@@ -15,7 +15,7 @@ body {
 .content {
     display: flex;
     flex-wrap: wrap;
-    padding-right: 200px;
+    padding: 100px 200px 0 0;
     justify-content: center;
     gap: 1rem;
     grid-column: 2 / 7;
@@ -142,16 +142,17 @@ h2 {
 }
 
 .card {
-    height: 600px;
-    width: 400px;
+    height: min-content;
+    width: 500px;
     background-color: #d4d4d4;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     gap: 3rem;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 16px;
+    padding: 3rem;
   }
 
   .navText {

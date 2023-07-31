@@ -47,6 +47,14 @@ export default class Project {
         submit.value = 'Create New Project'
         submit.setAttribute('type', 'submit')
         form.appendChild(submit)
+
+        const date = document.querySelector('.input-2')
+        date.setAttribute('type', 'datetime-local')
+        date.addEventListener('change', () => {
+            const selectedDateTime = date.value
+            console.log(selectedDateTime)
+        })
+
         
         //Submit Data
         form.addEventListener('submit', (e) => {

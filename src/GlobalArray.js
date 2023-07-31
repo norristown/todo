@@ -3,14 +3,20 @@ class GlobalArray {
         this.array = [];
     }
 
-    Add(item) {
+    add(item) {
         this.array.push(item);
     }
-    Get() {
+    get() {
         return this.array;
     }
-    Pop() {
+    pop() {
         this.array.pop()
+    }
+    find(title) {
+        this.array.find(o => o.Title === title)
+    }
+    splice(index, num) {
+        this.array.splice(index, num)
     }
 }
 
