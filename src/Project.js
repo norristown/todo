@@ -67,6 +67,13 @@ export default class Project {
                 document.querySelector('.input-2').value,
                 document.querySelector('.input-3').value
             )
+
+            // const card_ = {
+            //     'Title': document.querySelector('.input-0').value,
+            //     'Description': document.querySelector('.input-1').value,
+            //     'Due Date': document.querySelector('.input-2').value,
+            //     'Priority': document.querySelector('.input-3').value,
+            // }
             card.create()
             modalWindow.classList.add('hidden')
             this.loadWindow()

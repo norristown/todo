@@ -1,5 +1,5 @@
 const globalArray = require('./GlobalArray')
-const Card = require('./Card')
+import Card from './Card'
 import Project from './Project'
 export default class Dom {
 
@@ -41,6 +41,7 @@ export default class Dom {
     }
 
     delete() {
+        const modalWindow = document.querySelector('#modal')
         const delButton = document.querySelectorAll('.delete')
         delButton.forEach((button, index) => {
             button.addEventListener('click', (e) => {
@@ -51,8 +52,14 @@ export default class Dom {
                 
                 
                 console.log(globalArray.get())
-                
-               
+                this.create()
+                // const b = new Card
+                // b.create()
+                modalWindow.classList.add('hidden')
+                const a = new Project
+                a.loadWindow()
+                const x = new Dom
+                x.domStuff()
 
                 // this.addToProject()
 
@@ -64,8 +71,8 @@ export default class Dom {
     }
 
     create() {
+        console.log('click DomJS', globalArray.get())
         const content = document.querySelector('.content');
-        console.log('click', globalArray.get())
         content.innerHTML = '';
         for (let i = 0; i < globalArray.get().length; i++) {
             //Need Object not Array

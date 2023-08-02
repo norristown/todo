@@ -20,7 +20,7 @@ class CreateCard {
 
     create() {
         const content = document.querySelector('.content');
-        console.log('click', globalArray.get())
+        console.log('click CardJS', globalArray.get())
         content.innerHTML = '';
         for (let i = 0; i < globalArray.get().length; i++) {
             //Need Object not Array
