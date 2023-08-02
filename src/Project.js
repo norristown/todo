@@ -1,5 +1,5 @@
 import Dom from './Dom'
-const globalArray = require('./GlobalArray')
+// const globalArray = require('./GlobalArray')
 // const createCard = require('./Card')
 const Card = require('./Card')
 
@@ -61,7 +61,7 @@ export default class Project {
         //Submit Data
         form.addEventListener('submit', (e) => {
             e.preventDefault()
-            const card = new Card(
+            const card = new Card (
                 document.querySelector('.input-0').value,
                 document.querySelector('.input-1').value,
                 document.querySelector('.input-2').value,

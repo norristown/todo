@@ -5,6 +5,7 @@ export default class Dom {
 
     domStuff() {
 
+        this.addToProject()
         this.add()
         this.delete()
     }
@@ -13,6 +14,7 @@ export default class Dom {
         const add = document.querySelectorAll('.add')
         add.forEach(button => {
             button.addEventListener('click', (e) => {
+
                 const parent = e.target.parentElement.parentElement
                 const task = parent.querySelector('.task')
                 const newTask = document.createElement('input')
@@ -23,6 +25,19 @@ export default class Dom {
                 newDate.setAttribute('type', 'datetime-local')
                 task.appendChild(newTask)
                 task.appendChild(newDate)
+
+                const priorityValues = ['Very Important', 'Important', 'Least Important']
+                const priority = document.createElement('select')
+                priority.setAttribute('id', 'priority')
+                for (let i = 0; i < 3; i++) {
+                    const option = document.createElement('option')
+                    option.setAttribute('value', priorityValues[i])
+                    option.textContent = priorityValues[i]
+                    priority.appendChild(option)
+                    task.appendChild(priority)
+                }
+
+                task.appendChild(document.createElement('br'))
 
                 const newBtn = document.createElement('button')
                 newBtn.textContent = 'Add'
@@ -61,13 +76,10 @@ export default class Dom {
                 const x = new Dom
                 x.domStuff()
 
-                // this.addToProject()
+                this.addToProject()
 
             })
         })
-        
-        
-
     }
 
     create() {
@@ -92,22 +104,21 @@ export default class Dom {
                 </div>
              </div>`;
         }
-
     }
 
-    // addToProject() {
-    //     console.log('ADD ADDD ADDDDDD')
-    //     const project = document.querySelector('.sidebar-item-2')
-    //     const navText = project.querySelector('.navText')
+    addToProject() {
+        console.log('ADD ADDD ADDDDDD')
+        const project = document.querySelector('.sidebar-item-2')
+        const navText = project.querySelector('.navText')
 
-    //     // project.appendChild(thingyUl)
-    //     // const thingyLi = document.createElement('li')
-    //     navText.querySelector('p').innerHTML = "Projects"
-    //     for (let i = 0; i < globalArray.get().length; i++) {
-    //         const thingyLi = document.createElement('div')
-    //         thingyLi.textContent = globalArray.get()[i].Title
+        // project.appendChild(thingyUl)
+        // const thingyLi = document.createElement('li')
+        navText.querySelector('p').innerHTML = "Projects"
+        for (let i = 0; i < globalArray.get().length; i++) {
+            const thingyLi = document.createElement('div')
+            thingyLi.textContent = globalArray.get()[i].Title
 
-    //         navText.querySelector('p').appendChild(thingyLi)
-    //     }
-    // }
+            navText.querySelector('p').appendChild(thingyLi)
+        }
+    }
 }
