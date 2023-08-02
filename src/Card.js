@@ -40,6 +40,7 @@ class CreateCard {
                 </div>
              </div>`;
         }
+
     }
 }
 // let createCard = new CreateCard()

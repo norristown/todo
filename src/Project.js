@@ -6,12 +6,13 @@ const Card = require('./Card')
 export default class Project {
 
 
-    addProjectClick() {
+    loadWindow() {
 
         //Create Form
         const content = document.querySelector('.content')
         const modalWindow = document.createElement('div')
-        modalWindow.classList.add('modal')
+        modalWindow.className = 'modal hidden'
+        modalWindow.setAttribute('id', 'modal')
         content.appendChild(modalWindow)
 
         const h2 = document.createElement('h2')
@@ -23,7 +24,7 @@ export default class Project {
         closeButton.classList.add('close-modal')
         modalWindow.appendChild(closeButton)
         closeButton.addEventListener('click', () => {
-            modalWindow.remove()
+            modalWindow.classList.add('hidden')
         })
 
         const form = document.createElement('form')
@@ -42,6 +43,7 @@ export default class Project {
             form.appendChild(input)
             form.appendChild(document.createElement('br'))
         }
+
 
         const submit = document.createElement('input')
         submit.value = 'Create New Project'
@@ -66,10 +68,17 @@ export default class Project {
                 document.querySelector('.input-3').value
             )
             card.create()
+            modalWindow.classList.add('hidden')
+            this.loadWindow()
             const x = new Dom
             x.domStuff()
         })
 
+    }
+
+    click() {
+        const modalWindow = document.querySelector('#modal')
+        modalWindow.classList.remove('hidden')
     }
 
 

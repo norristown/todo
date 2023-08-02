@@ -18,6 +18,7 @@ class GlobalArray {
     splice(index, num) {
         this.array.splice(index, num)
     }
+
 }
 
 let globalArray = new GlobalArray()
