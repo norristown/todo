@@ -5,7 +5,6 @@ const Card = require('./Card')
 
 export default class Project {
 
-
     loadWindow() {
 
         //Create Form
@@ -32,7 +31,7 @@ export default class Project {
 
         modalWindow.appendChild(form)
 
-        const formInputs = ['Category: ', 'Task: ', 'Due Date: ', 'Priority: ']
+        const formInputs = ['Category', 'Task: ', 'Due Date: ']
 
         for (let i = 0; i < formInputs.length; i++) {
             const label = document.createElement('label')
@@ -44,6 +43,20 @@ export default class Project {
             form.appendChild(document.createElement('br'))
         }
 
+        const priorityValues = ['Very Important', 'Important', 'Least Important']
+        const priority = document.createElement('select')
+        priority.setAttribute('id', 'priority')
+        const label = document.createElement('label')
+        label.textContent = 'Priority: '
+        form.appendChild(label)
+        for (let i = 0; i < 3; i++) {
+            const option = document.createElement('option')
+            option.setAttribute('value', priorityValues[i])
+            option.setAttribute('id', `option-${i}`)
+            option.textContent = priorityValues[i]
+            priority.appendChild(option)
+            form.appendChild(priority)
+        }
 
         const submit = document.createElement('input')
         submit.value = 'Create New Project'
@@ -57,36 +70,26 @@ export default class Project {
             console.log(selectedDateTime)
         })
 
-        
         //Submit Data
         form.addEventListener('submit', (e) => {
             e.preventDefault()
-            const card = new Card (
+
+            const card = new Card(
                 document.querySelector('.input-0').value,
                 document.querySelector('.input-1').value,
                 document.querySelector('.input-2').value,
-                document.querySelector('.input-3').value
+                document.querySelector('#priority').value
             )
-
-            // const card_ = {
-            //     'Title': document.querySelector('.input-0').value,
-            //     'Description': document.querySelector('.input-1').value,
-            //     'Due Date': document.querySelector('.input-2').value,
-            //     'Priority': document.querySelector('.input-3').value,
-            // }
             card.create()
             modalWindow.classList.add('hidden')
             this.loadWindow()
             const x = new Dom
             x.domStuff()
         })
-
     }
 
     click() {
         const modalWindow = document.querySelector('#modal')
         modalWindow.classList.remove('hidden')
     }
-
-
 }
