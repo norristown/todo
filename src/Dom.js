@@ -45,11 +45,12 @@ export default class Dom {
 
                 newBtn.addEventListener('click', () => {
                     const p = document.createElement('p')
-                    p.textContent = `${newTask.value} at ${newDate.value}`
+                    p.innerHTML = `${newTask.value} at ${newDate.value}<br>Priority: ${priority.value}`
                     task.appendChild(p)
                     newTask.remove()
                     newBtn.remove()
                     newDate.remove()
+                    priority.remove()
                 })
             })
         })
@@ -89,20 +90,21 @@ export default class Dom {
         for (let i = 0; i < globalArray.get().length; i++) {
             //Need Object not Array
             content.innerHTML +=
-                `<div class="card">
-                    <div class="title">
-                        <p><strong>Category</strong>: ${globalArray.get()[i].Title}</p>
-                    </div>
-                    <div class="task">
-                        <p><strong>Tasks</strong>: ${globalArray.get()[i].Description} at ${globalArray.get()[i]['Due Date']}</p>
-                    </div>
+            `<div class="card-${i}" id="card">
+            <div class="title">
+                <p><strong>Category</strong>: ${globalArray.get()[i].Title}</p>
+            </div>
+            <div class="task"><strong>Tasks:</strong>
+                <p>${globalArray.get()[i].Description} on ${globalArray.get()[i]['Due Date']}<br>
+                    <strong>Priority</strong>: ${globalArray.get()[i].Priority}
+                </p>
+            </div>
 
-                <div class="priority"><strong>Priority</strong>: ${globalArray.get()[i].Priority}</div>
-                <div class="btnContainer">
-                    <button class="add" id="${globalArray.get()[i].Title}">Add Task</button>
-                    <button class="delete">Delete</button>
-                </div>
-             </div>`;
+        <div class="btnContainer">
+            <button class="add" id="${globalArray.get()[i].Title}">Add Task</button>
+            <button class="delete">Delete</button>
+        </div>
+     </div>`;
         }
     }
 

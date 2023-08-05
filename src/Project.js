@@ -2,6 +2,7 @@ import Dom from './Dom'
 // const globalArray = require('./GlobalArray')
 // const createCard = require('./Card')
 const Card = require('./Card')
+import { format } from 'date-fns'
 
 export default class Project {
 
@@ -58,26 +59,30 @@ export default class Project {
             form.appendChild(priority)
         }
 
+        form.appendChild(document.createElement('br'))
         const submit = document.createElement('input')
         submit.value = 'Create New Project'
+        submit.setAttribute('id', 'submit')
         submit.setAttribute('type', 'submit')
         form.appendChild(submit)
 
         const date = document.querySelector('.input-2')
         date.setAttribute('type', 'datetime-local')
-        date.addEventListener('change', () => {
-            const selectedDateTime = date.value
-            console.log(selectedDateTime)
-        })
+        // date.addEventListener('change', () => {
+            
+            
+            
+        // })
 
         //Submit Data
         form.addEventListener('submit', (e) => {
             e.preventDefault()
+            const selectedDateTime = format(new Date(date.value), "MM-dd-yyyy' at 'h:mm b")
 
             const card = new Card(
                 document.querySelector('.input-0').value,
                 document.querySelector('.input-1').value,
-                document.querySelector('.input-2').value,
+                selectedDateTime,
                 document.querySelector('#priority').value
             )
             card.create()
