@@ -27,11 +27,11 @@ class CreateCard {
             content.innerHTML +=
                 `<div class="card-${i}" id="card">
                     <div class="title">
-                        <p><strong>Category</strong>: ${globalArray.get()[i].Title}</p>
+                        <strong>Category</strong>: ${globalArray.get()[i].Title}
                     </div>
                     <div class="task"><strong>Tasks:</strong>
-                        <p>${globalArray.get()[i].Description} on ${globalArray.get()[i]['Due Date']}<br>
-                            <strong>Priority</strong>: ${globalArray.get()[i].Priority}
+                        <p class="p-${i}">${globalArray.get()[i].Description} on ${globalArray.get()[i]['Due Date']}<br>
+                        <strong>Priority: <span class="priority">${globalArray.get()[i].Priority}</span></strong>
                         </p>
                     </div>
 

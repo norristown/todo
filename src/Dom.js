@@ -1,6 +1,7 @@
 const globalArray = require('./GlobalArray')
 import Card from './Card'
 import Project from './Project'
+import { format } from 'date-fns'
 export default class Dom {
 
     domStuff() {
@@ -45,7 +46,7 @@ export default class Dom {
 
                 newBtn.addEventListener('click', () => {
                     const p = document.createElement('p')
-                    p.innerHTML = `${newTask.value} at ${newDate.value}<br>Priority: ${priority.value}`
+                    p.innerHTML = `${newTask.value} at ${format(new Date(newDate.value), "MM-dd-yyyy' at 'h:mm b")}<br><strong>Priority: <span class="priority">${priority.value}</span></strong>`
                     task.appendChild(p)
                     newTask.remove()
                     newBtn.remove()
@@ -62,11 +63,11 @@ export default class Dom {
         delButton.forEach((button, index) => {
             button.addEventListener('click', (e) => {
                 e.target.parentNode.parentNode.remove();
-                
+
                 globalArray.get().splice(index, 1)
-                
-                
-                
+
+
+
                 console.log(globalArray.get())
                 this.create()
                 // const b = new Card
@@ -90,13 +91,13 @@ export default class Dom {
         for (let i = 0; i < globalArray.get().length; i++) {
             //Need Object not Array
             content.innerHTML +=
-            `<div class="card-${i}" id="card">
+                `<div class="card-${i}" id="card">
             <div class="title">
-                <p><strong>Category</strong>: ${globalArray.get()[i].Title}</p>
+                <strong>Category</strong>: ${globalArray.get()[i].Title}
             </div>
             <div class="task"><strong>Tasks:</strong>
-                <p>${globalArray.get()[i].Description} on ${globalArray.get()[i]['Due Date']}<br>
-                    <strong>Priority</strong>: ${globalArray.get()[i].Priority}
+                <p>${globalArray.get()[i].Description} on ${globalArray.get()[i]['Due Date']}
+                    <strong>Priority: <span class="priority">${globalArray.get()[i].Priority}</span></strong>
                 </p>
             </div>
 
