@@ -65,7 +65,6 @@ export default class Dom {
             button.addEventListener('click', (e) => {
                 e.target.parentNode.parentNode.remove();
                 globalArray.get().splice(index, 1)
-                console.log('create.create')
                 create.create()
                 modalWindow.classList.add('hidden')
                 const a = new Project
