@@ -72,15 +72,9 @@ export default class Project {
         //Submit Data
         form.addEventListener('submit', (e) => {
             e.preventDefault()
-            const selectedDateTime = format(new Date(date.value), "iiii MM-dd-yyyy' at 'h:mm b")
-
-            const card = new Card(
-                document.querySelector('.input-0').value,
-                document.querySelector('.input-1').value,
-                selectedDateTime,
-                document.querySelector('#priority').value
-            )
-            card.create()
+            const selectedDateTime = format(new Date(date.value), "iiii MMMM dd, yyyy' at 'h:mm b")
+            const card = new Card(document.querySelector('.input-0').value, document.querySelector('.input-1').value, selectedDateTime, document.querySelector('#priority').value)
+            card.create
             modalWindow.classList.add('hidden')
             this.loadWindow()
             const x = new Dom
