@@ -9,9 +9,9 @@ class CreateCard {
 
         this.obj = {
             'Title': this.title,
-            'Description': this.description,
-            'Due Date': this.dueDate,
-            'Priority': this.priority
+            'Description': [this.description],
+            'Due Date': [this.dueDate],
+            'Priority': [this.priority]
         }
         
         globalArray.add(this.obj)

@@ -12,13 +12,15 @@ class GlobalArray {
     pop() {
         this.array.pop()
     }
-    find(title) {
-        this.array.find(o => o.Title === title)
+    find(item) {
+        this.array.find(o => o)
     }
     splice(index, num) {
         this.array.splice(index, num)
     }
-
+    taskArr(i) {
+        this.array[i].Description
+    }
 }
 
 let globalArray = new GlobalArray()

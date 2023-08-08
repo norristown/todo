@@ -19,7 +19,7 @@ const addClick = document.querySelector('.li-container-2')
 project.loadWindow()
 addClick.addEventListener('click', () => {
     project.click()
-    
+    console.log('click index')
 })
 
 

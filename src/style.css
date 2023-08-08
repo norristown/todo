@@ -162,23 +162,25 @@ h2 {
     font-size: 1rem;
   }
 
-  .task p {
-    /* text-indent: 1rem; */
-    border: 3px solid black;
+  .task #p {
+    gap: 1rem;
+    border: 3px solid orange;
+    border-radius: 2rem;
     background-color: white;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
   
   .priority {
     color: red;
   }
 
-  p {
+  #p {
     padding: 12px;
   }
 
-  .title {
+  #title {
     padding-bottom: 1rem;
     font-size: 32px;
     font-weight: 800;
@@ -192,4 +194,10 @@ h2 {
 
   .titleText {
     color: orange;
+  }
+
+  .accept,
+  .remove{
+    height: 30px;
+    width: 30px;
   }

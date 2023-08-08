@@ -6,10 +6,10 @@ const create = require('./create')
 export default class Dom {
 
     domStuff() {
-
         this.addToProject()
         this.add()
         this.delete()
+        this.taskFunctions()
     }
 
     add() {
@@ -18,6 +18,7 @@ export default class Dom {
             button.addEventListener('click', (e) => {
 
                 const parent = e.target.parentElement.parentElement
+                console.log(parent)
                 const task = parent.querySelector('.task')
                 const newTask = document.createElement('input')
                 document.activeElement.blur()
@@ -39,20 +40,54 @@ export default class Dom {
                     task.appendChild(priority)
                 }
 
-                task.appendChild(document.createElement('br'))
+                const br = document.createElement('br')
+                task.appendChild(br)
 
                 const newBtn = document.createElement('button')
                 newBtn.textContent = 'Add'
                 task.appendChild(newBtn)
 
+                const cancel = document.createElement('button')
+                cancel.textContent = 'Cancel'
+                task.appendChild(cancel)
+
+                cancel.addEventListener('click', () => {
+                    newTask.remove()
+                    newBtn.remove()
+                    newDate.remove()
+                    priority.remove()
+                    br.remove()
+                    cancel.remove()
+                })
+
                 newBtn.addEventListener('click', () => {
+                    
+                    const formattedTime = format(new Date(newDate.value), "iiii MMMM dd, yyyy' at 'h:mm b")
                     const p = document.createElement('p')
-                    p.innerHTML = `${newTask.value} at ${format(new Date(newDate.value), "MM-dd-yyyy' at 'h:mm b")}<br><strong>Priority: <span class="priority">${priority.value}</span></strong>`
+                    p.setAttribute('id', 'p')
+                    p.innerHTML = `
+                    ${newTask.value} on ${formattedTime}<br><strong>Priority: <span class="priority">${priority.value}</span></strong><div class="imgContainer">
+                    <img src="${this.createIcon('accept.png')}" class="accept">
+                    <img src="${this.createIcon('remove.png')}" class="remove">
+                    </div>`
                     task.appendChild(p)
                     newTask.remove()
                     newBtn.remove()
                     newDate.remove()
                     priority.remove()
+
+                    const taskArr = globalArray.get()[e.target.parentElement.previousElementSibling.previousElementSibling.className].Description
+                    const dueDateArr = globalArray.get()[e.target.parentElement.previousElementSibling.previousElementSibling.className]['Due Date']
+                    const priorityArr = globalArray.get()[e.target.parentElement.previousElementSibling.previousElementSibling.className].Priority
+                    taskArr.push(newTask.value)
+                    dueDateArr.push(formattedTime)
+                    priorityArr.push(priority.value)
+                    
+                    create.create()
+                    const a = new Project
+                    a.loadWindow()
+                    this.domStuff()
+
                 })
             })
         })
@@ -65,13 +100,11 @@ export default class Dom {
             button.addEventListener('click', (e) => {
                 e.target.parentNode.parentNode.remove();
                 globalArray.get().splice(index, 1)
-                create.create()
+                console.log(globalArray.get())
                 modalWindow.classList.add('hidden')
                 const a = new Project
                 a.loadWindow()
-                const x = new Dom
-                x.domStuff()
-                this.addToProject()
+                // this.domStuff()
             })
         })
     }
@@ -90,5 +123,25 @@ export default class Dom {
 
             navText.querySelector('p').appendChild(thingyLi)
         }
+    }
+
+    createIcon(iconPath) {
+        let img = require(`./icons/${iconPath}`)
+        const picture = document.createElement('img')
+        picture.src = img
+        return img
+    }
+
+    taskFunctions() {
+        const accept = document.querySelectorAll('.accept')
+        const remove = document.querySelectorAll('.remove')
+
+        accept.forEach((button) => {
+            button.addEventListener('click', () => console.log('accept'))
+        })
+
+        remove.forEach((button) => {
+            button.addEventListener('click', () => console.log('remove'))
+        })
     }
 }
