@@ -61,7 +61,7 @@ export default class Dom {
                 })
 
                 newBtn.addEventListener('click', () => {
-                    
+
                     const formattedTime = format(new Date(newDate.value), "iiii MMMM dd, yyyy' at 'h:mm b")
                     const p = document.createElement('p')
                     p.setAttribute('id', 'p')
@@ -82,7 +82,7 @@ export default class Dom {
                     taskArr.push(newTask.value)
                     dueDateArr.push(formattedTime)
                     priorityArr.push(priority.value)
-                    
+
                     create.create()
                     const a = new Project
                     a.loadWindow()
@@ -104,7 +104,6 @@ export default class Dom {
                 modalWindow.classList.add('hidden')
                 const a = new Project
                 a.loadWindow()
-                // this.domStuff()
             })
         })
     }
@@ -136,12 +135,28 @@ export default class Dom {
         const accept = document.querySelectorAll('.accept')
         const remove = document.querySelectorAll('.remove')
 
-        accept.forEach((button) => {
-            button.addEventListener('click', () => console.log('accept'))
+        accept.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                console.log('accept', index)
+            })
         })
 
         remove.forEach((button) => {
-            button.addEventListener('click', () => console.log('remove'))
+            button.addEventListener('click', (e) => {
+                console.log('remove', e.target.parentElement.parentElement.parentElement.previousElementSibling.className)
+                console.log('p', e.target.parentElement.parentElement )
+    
+                const taskArr = globalArray.get()[e.target.parentElement.parentElement.parentElement.previousElementSibling.className].Description
+                const dueDateArr = globalArray.get()[e.target.parentElement.parentElement.parentElement.previousElementSibling.className]['Due Date']
+                const priorityArr = globalArray.get()[e.target.parentElement.parentElement.parentElement.previousElementSibling.className].Priority
+                taskArr.splice(e.target.parentElement.parentElement.className, 1)
+                dueDateArr.splice(e.target.parentElement.parentElement.className, 1)
+                priorityArr.splice(e.target.parentElement.parentElement.className, 1)
+                create.create()
+                const a = new Project
+                a.loadWindow()
+                this.domStuff()
+            })
         })
     }
 }

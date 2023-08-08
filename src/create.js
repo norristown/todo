@@ -18,13 +18,14 @@ export function create() {
 
         const taskDiv = document.createElement('div')
         taskDiv.className = 'task'
-        taskDiv.textContent = 'Tasks: '
+        taskDiv.innerHTML = '<p class="taskText">Tasks: </p>'
         cardDiv.appendChild(taskDiv)
 
         for (let j = 0; j < globalArray.get()[i].Description.length; j++) {
             console.log('j loop')
             const pDiv = document.createElement('div')
             pDiv.setAttribute('id', 'p')
+            pDiv.className = `${j}`
             pDiv.innerHTML = `
             ${globalArray.get()[i].Description[j]} on ${globalArray.get()[i]['Due Date'][j]}<br>
                     <strong>Priority: <span class="priority">${globalArray.get()[i].Priority[j]}</span></strong> 
