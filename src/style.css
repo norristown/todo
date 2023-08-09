@@ -171,9 +171,10 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 1rem;
   }
   
-  .priority {
+  .priorityColor {
     color: red;
   }
 
@@ -207,3 +208,13 @@ h2 {
     font-size: 24px;
     font-weight: 800;
   }
+
+  .priorityText {
+    font-weight: 800;
+  }
+
+  .line {
+    text-decoration: line-through;
+  }
+
+  

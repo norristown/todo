@@ -1,11 +1,6 @@
 import Dom from './Dom'
-// const globalArray = require('./GlobalArray')
-// const createCard = require('./Card')
 const Card = require('./Card')
 import { format } from 'date-fns'
-import globalArray from './GlobalArray'
-const create = require('./create')
-
 export default class Project {
 
     loadWindow() {
@@ -35,7 +30,8 @@ export default class Project {
 
         modalWindow.appendChild(form)
 
-        const formInputs = ['Category', 'Task: ', 'Due Date: ']
+        const formInputs = ['Category:', 'Task: ', 'Due Date: ']
+        const placeholder = ['Enter a category (e.g. "Work", "For Fun", etc.)', 'Enter a task to do (e.g. "Meeting with team")']
 
         for (let i = 0; i < formInputs.length; i++) {
             const label = document.createElement('label')
@@ -43,6 +39,7 @@ export default class Project {
             form.appendChild(label)
             const input = document.createElement('input')
             input.classList.add(`input-${[i]}`)
+            input.setAttribute('placeholder', `${placeholder[i]}`)
             form.appendChild(input)
             form.appendChild(document.createElement('br'))
         }
@@ -71,20 +68,16 @@ export default class Project {
 
         const date = document.querySelector('.input-2')
         date.setAttribute('type', 'datetime-local')
+        date.setAttribute('required', true)
+        const today = format(new Date(), 'yyyy-MM-dd')
+        date.setAttribute('value', `${today}T12:00`)
 
         //Submit Data
-        //---------------------------------------------------------------------------FIX THIS----------------------------------------------------------------------------------
         form.addEventListener('submit', (e) => {
             e.preventDefault()
             const selectedDateTime = format(new Date(date.value), "iiii MMMM dd, yyyy' at 'h:mm b")
-            // create.create()
             const card = new Card(document.querySelector('.input-0').value, document.querySelector('.input-1').value, selectedDateTime, document.querySelector('#priority').value)
             card.create
-            // for (let i = 0; i < globalArray.get().length; i++) {
-            //     card.create
-            // }
-            // const modalWindow = document.querySelector('#modal')
-            // modalWindow.classList.add('hidden')
             this.loadWindow()
             const x = new Dom
             x.domStuff()

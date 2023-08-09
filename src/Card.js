@@ -11,7 +11,8 @@ class CreateCard {
             'Title': this.title,
             'Description': [this.description],
             'Due Date': [this.dueDate],
-            'Priority': [this.priority]
+            'Priority': [this.priority],
+            'Finished': [false]
         }
         
         globalArray.add(this.obj)

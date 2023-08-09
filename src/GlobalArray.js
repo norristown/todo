@@ -12,14 +12,8 @@ class GlobalArray {
     pop() {
         this.array.pop()
     }
-    find(item) {
-        this.array.find(o => o)
-    }
     splice(index, num) {
         this.array.splice(index, num)
-    }
-    taskArr(i) {
-        this.array[i].Description
     }
 }
 

@@ -7,6 +7,7 @@ export function create() {
     
         const cardDiv = document.createElement('div')
         cardDiv.setAttribute('id', 'card')
+        cardDiv.className = `card${i}`
         content.appendChild(cardDiv)
 
         const titleDiv = document.createElement('div')
@@ -22,20 +23,52 @@ export function create() {
         cardDiv.appendChild(taskDiv)
 
         for (let j = 0; j < globalArray.get()[i].Description.length; j++) {
-            console.log('j loop')
+            
             const pDiv = document.createElement('div')
             pDiv.setAttribute('id', 'p')
             pDiv.className = `${j}`
             pDiv.innerHTML = `
-            ${globalArray.get()[i].Description[j]} on ${globalArray.get()[i]['Due Date'][j]}<br>
-                    <strong>Priority: <span class="priority">${globalArray.get()[i].Priority[j]}</span></strong> 
-                    <div class="imgContainer">
-                        <img src="${createIcon('accept.png')}" class="accept">
-                        <img src="${createIcon('remove.png')}" class="remove">
-                    </div>
-                </div>`
+            <div class="task${j}">
+                ${globalArray.get()[i].Description[j]} on ${globalArray.get()[i]['Due Date'][j]}
+            </div>
+            <div class="priorityText${j}">
+                Priority: <span class="priorityColor" id="priorityColor${j}">${globalArray.get()[i].Priority[j]}
+            </div>
+            <div class="imgContainer">
+                <img src="${createIcon('accept.png')}" class="accept">
+                <img src="${createIcon('remove.png')}" class="remove">
+            </div>
+            `
 
             taskDiv.appendChild(pDiv)
+        }
+
+        for (let j = 0; j < globalArray.get()[i].Finished.length; j++) {
+
+            console.log('first', i, j)
+            console.log( globalArray.get()[i].Finished[j])
+            console.log('array', globalArray.get()[i].Finished.length)
+            const card = document.querySelector(`.card${i}`)
+            console.log(card.querySelector(`.task${j}`))
+            
+            if (globalArray.get()[i].Finished[j]) {
+                console.log('if')
+                const task = card.querySelector(`.task${j}`)
+                task.classList.add('line')
+                console.log('query', task)
+                const priority = card.querySelector(`.priorityText${j}`)
+                priority.style.color = 'grey'
+                const priorityColor = card.querySelector(`#priorityColor${j}`)
+                priorityColor.style.color = 'grey'
+            } else {
+                console.log('else', globalArray.get()[i].Finished[j])
+                // const task = document.querySelector(`.task${j}`)
+                // task.style.textDecoration = 'none'
+                // const priority = document.querySelector(`.priorityText${j}`)
+                // priority.style.color = 'black'
+                // const priorityColor = document.querySelector(`#priorityColor${j}`)
+                // priorityColor.style.color = 'red'
+            }
         }
         
         const btnContainer = document.createElement('div')
