@@ -26,16 +26,16 @@ export default class Sidebar {
     createSidebar () {
         const sidebarContent = [
             {
-                text: 'Today',
+                text: 'All Projects',
+                icon: this.createIcon('ruler-square.png')
+            },
+            {
+                text: 'Due Today',
                 icon: this.createIcon('calendar-check.png')
             },
             {
                 text: 'Next 7 Days',
                 icon: this.createIcon('calendar-end.png')
-            },
-            {
-                text: 'Projects',
-                icon: this.createIcon('ruler-square.png')
             }
         ];
 
@@ -52,5 +52,31 @@ export default class Sidebar {
         const picture = document.createElement('img')
         picture.src = img
         return img
+    }
+
+    sideBarSelect() {
+        const allProjects = document.querySelector('.sidebar-item-0')
+        const today = document.querySelector('.sidebar-item-1')
+        const seven = document.querySelector('.sidebar-item-2')
+   
+        allProjects.addEventListener('click', () => {
+            allProjects.style.backgroundColor = '#525252'
+            today.style.backgroundColor = 'orange'
+            seven.style.backgroundColor = 'orange'
+        })
+
+        today.addEventListener('click', () => {
+            allProjects.style.backgroundColor = 'orange'
+            today.style.backgroundColor = '#525252'
+            seven.style.backgroundColor = 'orange'
+        })
+
+        seven.addEventListener('click', () => {
+            allProjects.style.backgroundColor = 'orange'
+            today.style.backgroundColor = 'orange'
+            seven.style.backgroundColor = '#525252'
+        })
+
+        
     }
 }

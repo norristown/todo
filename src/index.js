@@ -20,3 +20,5 @@ const homeText = document.createElement('h1')
 homeText.textContent = 'Click Add Project To Get Started'
 homeText.classList.add('home-text')
 content.appendChild(homeText)
+
+sidebar.sideBarSelect()

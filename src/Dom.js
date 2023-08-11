@@ -6,7 +6,6 @@ const create = require('./create')
 export default class Dom {
 
     domStuff() {
-        this.addToProject()
         this.add()
         this.delete()
         this.taskFunctions()
@@ -46,13 +45,19 @@ export default class Dom {
                 const br = document.createElement('br')
                 task.appendChild(br)
 
+                const buttonDiv = document.createElement('div')
+                buttonDiv.className = 'littleContainer'
+                task.appendChild(buttonDiv)
+
                 const newBtn = document.createElement('button')
                 newBtn.textContent = 'Add'
-                task.appendChild(newBtn)
+                newBtn.className = 'littleAdd'
+                buttonDiv.appendChild(newBtn)
 
                 const cancel = document.createElement('button')
                 cancel.textContent = 'Cancel'
-                task.appendChild(cancel)
+                cancel.className = 'littleCancel'
+                buttonDiv.appendChild(cancel)
 
                 cancel.addEventListener('click', () => {
                     newTask.remove()
@@ -65,16 +70,7 @@ export default class Dom {
 
                 newBtn.addEventListener('click', () => {
 
-
                     const formattedTime = format(new Date(newDate.value), "iiii MMMM dd, yyyy' at 'h:mm b")
-                    // const p = document.createElement('p')
-                    // p.setAttribute('id', 'p')
-                    // p.innerHTML = `
-                    // ${newTask.value} on ${formattedTime}<br><strong>Priority: <span class="priority">${priority.value}</span></strong><div class="imgContainer">
-                    // <img src="${this.createIcon('accept.png')}" class="accept">
-                    // <img src="${this.createIcon('remove.png')}" class="remove">
-                    // </div>`
-                    // task.appendChild(p)
                     newTask.remove()
                     newBtn.remove()
                     newDate.remove()
@@ -119,18 +115,6 @@ export default class Dom {
         })
     }
 
-    addToProject() {
-
-        const project = document.querySelector('.sidebar-item-2')
-        const navText = project.querySelector('.navText')
-        navText.querySelector('p').innerHTML = "Projects"
-        for (let i = 0; i < globalArray.get().length; i++) {
-            const thingyLi = document.createElement('div')
-            thingyLi.textContent = globalArray.get()[i].Title
-            navText.querySelector('p').appendChild(thingyLi)
-        }
-    }
-
     createIcon(iconPath) {
         let img = require(`./icons/${iconPath}`)
         const picture = document.createElement('img')
@@ -140,7 +124,7 @@ export default class Dom {
 
     taskFunctions() {
 
-        //-----------------------------FIX THE LINE OUT THING----------------------------------------------------------------------
+        
         const accept = document.querySelectorAll('.accept')
         const remove = document.querySelectorAll('.remove')
 
@@ -148,7 +132,7 @@ export default class Dom {
             button.addEventListener('click', (e) => {
                 const finishedArr = globalArray.get()[e.target.parentElement.parentElement.parentElement.previousElementSibling.className].Finished
                 if (!finishedArr[e.target.parentElement.parentElement.className]) {
-                    console.log('green', finishedArr[e.target.parentElement.parentElement.className])
+                    
                     const task = e.target.parentElement.previousElementSibling.previousElementSibling
                     task.classList.add('line')
                     const priority = e.target.parentElement.previousElementSibling
@@ -157,7 +141,7 @@ export default class Dom {
                     priorityColor.style.color = 'grey'
                     finishedArr[e.target.parentElement.parentElement.className] = true;
                 } else {
-                    console.log('false', finishedArr[e.target.parentElement.parentElement.className], globalArray.get())
+                    
                     const task = e.target.parentElement.previousElementSibling.previousElementSibling
                     task.classList.remove('line')
                     const priority = e.target.parentElement.previousElementSibling

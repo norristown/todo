@@ -14,7 +14,7 @@ export function create() {
         titleDiv.className = [i]
         titleDiv.setAttribute('id', 'title')
         titleDiv.setAttribute('value', `${globalArray.get()[i].Title}`)
-        titleDiv.innerHTML = `<strong>Category</strong>: <span class="titleText">${globalArray.get()[i].Title}</span>`
+        titleDiv.innerHTML = `<div>Category: <span class="titleText">${globalArray.get()[i].Title}</span></div><button class="delete">Delete</button>`
         cardDiv.appendChild(titleDiv)
 
         const taskDiv = document.createElement('div')
@@ -31,7 +31,7 @@ export function create() {
             <div class="task${j}">
                 ${globalArray.get()[i].Description[j]} on ${globalArray.get()[i]['Due Date'][j]}
             </div>
-            <div class="priorityText${j}">
+            <div class="priorityText${j}" id="priorityText">
                 Priority: <span class="priorityColor" id="priorityColor${j}">${globalArray.get()[i].Priority[j]}
             </div>
             <div class="imgContainer">
@@ -75,7 +75,7 @@ export function create() {
         btnContainer.className = 'btnContainer'
         btnContainer.innerHTML = `
         <button class="add" id="${globalArray.get()[i].Title}">Add Task</button>
-        <button class="delete">Delete</button>`
+        `
         cardDiv.appendChild(btnContainer)
     }
 
