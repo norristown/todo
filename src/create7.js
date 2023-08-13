@@ -1,9 +1,9 @@
-import globalArray from "./GlobalArray";
-
+import next7Days from "./next7Days";
+const next = new next7Days
 export function create() {
     const content = document.querySelector('.content');
     content.innerHTML = '';
-    for (let i = 0; i < globalArray.get().length; i++) {
+    for (let i = 0; i < next.array.length; i++) {
     
         const cardDiv = document.createElement('div')
         cardDiv.setAttribute('id', 'card')

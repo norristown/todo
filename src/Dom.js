@@ -17,7 +17,6 @@ export default class Dom {
             button.addEventListener('click', (e) => {
 
                 const parent = e.target.parentElement.parentElement
-                console.log(parent)
                 const task = parent.querySelector('.task')
                 const newTask = document.createElement('input')
                 document.activeElement.blur()
@@ -104,13 +103,11 @@ export default class Dom {
             button.addEventListener('click', (e) => {
                 e.target.parentNode.parentNode.remove();
                 globalArray.get().splice(index, 1)
-                console.log(globalArray.get())
                 modalWindow.classList.add('hidden')
                 create.create()
                 const a = new Project
                 a.loadWindow()
                 this.domStuff()
-                console.log(e.target.parentNode.parentNode)
             })
         })
     }
@@ -157,8 +154,6 @@ export default class Dom {
 
         remove.forEach((button) => {
             button.addEventListener('click', (e) => {
-                console.log(globalArray.get())
-
                 const taskArr = globalArray.get()[e.target.parentElement.parentElement.parentElement.previousElementSibling.className].Description
                 const dueDateArr = globalArray.get()[e.target.parentElement.parentElement.parentElement.previousElementSibling.className]['Due Date']
                 const priorityArr = globalArray.get()[e.target.parentElement.parentElement.parentElement.previousElementSibling.className].Priority

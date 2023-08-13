@@ -2,6 +2,7 @@ import './style.css'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
 import Project from './Project'
+const seven = require('./next7Days')
 
 const page = new Navbar
 const sidebar = new Sidebar
@@ -22,3 +23,5 @@ homeText.classList.add('home-text')
 content.appendChild(homeText)
 
 sidebar.sideBarSelect()
+const sevenBtn = document.querySelector('.sidebar-item-2')
+sevenBtn.addEventListener('click', seven.next7Days)
