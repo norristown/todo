@@ -22,7 +22,6 @@ export default class Project {
         modalWindow.appendChild(closeButton)
         closeButton.addEventListener('click', () => {
             modalWindow.classList.add('hidden')
-            console.log('x')
         })
 
         const form = document.createElement('form')

@@ -1,14 +1,13 @@
 import globalArray from "./GlobalArray";
-
+const create = require('./create')
+import Project from "./Project";
+import Dom from "./Dom";
 export function next7Days() {
     let sevenArr = []
     // let nextArr = []
-    for (let i = 0; i < globalArray.get().length; i++) {
-        sevenArr.push(globalArray.get()[i]['Due Date'])
-    }
     let month;
     let value;
-    switch(new Date().getMonth()) {
+    switch (new Date().getMonth()) {
         case 0:
             month = 'January'
             value = 0
@@ -62,18 +61,34 @@ export function next7Days() {
     //Get month from string
     //compare month with value and today's month
     //print list if same
-    
+
     for (let i = 0; i < globalArray.get().length; i++) {
-        console.log(globalArray.get()[i]['Due Date'])
         for (let j = 0; j < globalArray.get()[i]['Due Date'].length; j++) {
             const split = globalArray.get()[i]['Due Date'][j].split(' ')
             const getMonth = split[1]
             if (month === getMonth) {
                 const getDay = split[2].replace(',', '')
                 const today = new Date().getDate()
-                if (today - getDay <= 7) {
+                if (getDay - today <= 7) {
                     console.log('answer')
-                    
+                    console.log(globalArray.get()[i].Title)
+                    console.log(globalArray.get()[i].Description[j])
+                    console.log(globalArray.get()[i]['Due Date'][j])
+                    console.log(globalArray.get()[i].Priority)
+                    let obj = {
+                        'Title': globalArray.get()[i].Title,
+                        'Description': globalArray.get()[i].Description[j],
+                        'Due Date': globalArray.get()[i]['Due Date'][j],
+                        'Priority': globalArray.get()[i].Priority[j],
+                        'Finished': globalArray.get()[i].Finished[j]
+                    }
+                    sevenArr.push(obj)
+                    console.log('seven', sevenArr)
+                    // create.create()
+                    // const a = new Project
+                    // a.loadWindow()
+                    // const b = new Dom
+                    // b.domStuff()
                 } else {
                     console.log('no week')
                 }
@@ -91,13 +106,13 @@ export function next7Days() {
             //         nextArr.push(obj.date)
             //         console.log(nextArr)
             //     }
-                
-                
+
+
             // }
             // else { 
             //     console.log('false')
             // }
-            
+
         }
     }
 }
