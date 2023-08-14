@@ -5,8 +5,8 @@
 
 body {
   margin: 0;
+  
   height: 100vh;
-
 }
 
 .content {
@@ -14,11 +14,10 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
-  height: 100vh;
-  padding: 2rem;
+  padding: 50px 180px;
   color: white;
   background-color: #525252;
-  margin-left: 150px;
+  height: 100vh;
 
 }
 
@@ -27,16 +26,18 @@ body {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: orange;
+  background-color: #fb923c;
   text-align: center;
   display: flex;
   justify-content: space-around;
+  font-size: 14px;
 }
 
 .navbar {
   display: flex;
   align-items: center;
   padding: 0 1rem;
+  background-color: #fb923c;
 }
 
 .header-left,
@@ -79,7 +80,7 @@ body {
 .sidebar-container {
   position: absolute;
   grid-column: 1;
-  background-color: orange;
+  background-color: #fb923c;
   height: 100vh;
 }
 
@@ -157,7 +158,7 @@ h2 {
   flex-direction: column;
   background-color: #1e293b;
   color: white;
-  border: 3px solid orange;
+  border: 3px solid #fb923c;
 
   -webkit-box-shadow: 4px 28px 96px -1px rgba(0,0,0,0.33);
 -moz-box-shadow: 4px 28px 96px -1px rgba(0,0,0,0.33);
@@ -179,7 +180,7 @@ box-shadow: 4px 28px 96px -1px rgba(0,0,0,0.33);
 
 .task #p {
   gap: 1rem;
-  border: 3px solid orange;
+  border: 3px solid #fb923c;
   border-radius: 2rem;
   background-color: white;
   display: flex;
@@ -213,13 +214,18 @@ box-shadow: 4px 28px 96px -1px rgba(0,0,0,0.33);
 }
 
 .titleText {
-  color: orange;
+  color: #fb923c;
 }
 
 .accept,
 .remove {
   height: 30px;
   width: 30px;
+  cursor: pointer;
+  transition: all .2s ease-in-out; 
+}
+.accept:hover,.remove:hover {
+  transform: scale(1.1); 
 }
 
 .taskText {
@@ -247,6 +253,7 @@ a {
 
 .date {
   font-weight: 800;
+  font-size: 24px;
 }
 
 .add {
@@ -301,4 +308,9 @@ a {
 .start {
   color: red; 
   font-weight: 800;
+}
+
+.li-container-2 {
+  font-weight: 800;
+  font-size: 24px;
 }

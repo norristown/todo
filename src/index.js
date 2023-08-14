@@ -7,6 +7,9 @@ const create = require('./create')
 import globalArray from './GlobalArray'
 import Dom from './Dom'
 const dueToday = require('./today')
+const loadLocalStorage = require('./localStorage')
+
+loadLocalStorage.loadLocalStorage()
 
 const page = new Navbar
 const sidebar = new Sidebar
@@ -48,3 +51,6 @@ allProjects.addEventListener('click', () => {
 
 const today = document.querySelector('.sidebar-item-1')
 today.addEventListener('click', dueToday.today)
+
+
+

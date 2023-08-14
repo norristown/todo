@@ -64,22 +64,22 @@ export default class Sidebar {
             allProjects.style.color = 'white'
             today.style.color = 'black'
             seven.style.color = 'black'
-            today.style.backgroundColor = 'orange'
-            seven.style.backgroundColor = 'orange'
+            today.style.backgroundColor = '#fb923c'
+            seven.style.backgroundColor = '#fb923c'
         })
 
         today.addEventListener('click', () => {
-            allProjects.style.backgroundColor = 'orange'
+            allProjects.style.backgroundColor = '#fb923c'
             today.style.backgroundColor = '#525252'
-            seven.style.backgroundColor = 'orange'
+            seven.style.backgroundColor = '#fb923c'
             allProjects.style.color = 'black'
             today.style.color = 'white'
             seven.style.color = 'black'
         })
 
         seven.addEventListener('click', () => {
-            allProjects.style.backgroundColor = 'orange'
-            today.style.backgroundColor = 'orange'
+            allProjects.style.backgroundColor = '#fb923c'
+            today.style.backgroundColor = '#fb923c'
             seven.style.backgroundColor = '#525252'
             allProjects.style.color = 'black'
             today.style.color = 'black'

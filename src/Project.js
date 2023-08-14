@@ -1,6 +1,7 @@
 import Dom from './Dom'
 const Card = require('./Card')
 import { format } from 'date-fns'
+import globalArray from './GlobalArray'
 export default class Project {
 
     loadWindow() {
@@ -70,6 +71,10 @@ export default class Project {
         date.setAttribute('required', true)
         const today = format(new Date(), 'yyyy-MM-dd')
         date.setAttribute('value', `${today}T12:00`)
+
+        let globalArray_serialized = JSON.stringify(globalArray.get())
+        localStorage.setItem('localStorageArray', globalArray_serialized)
+        
 
         //Submit Data
         form.addEventListener('submit', (e) => {
