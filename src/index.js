@@ -6,6 +6,7 @@ const seven = require('./next7Days')
 const create = require('./create')
 import globalArray from './GlobalArray'
 import Dom from './Dom'
+const dueToday = require('./today')
 
 const page = new Navbar
 const sidebar = new Sidebar
@@ -42,6 +43,8 @@ allProjects.addEventListener('click', () => {
         project.loadWindow()
         const b = new Dom
         b.domStuff()
-        console.log(globalArray.get())
     }
 })
+
+const today = document.querySelector('.sidebar-item-1')
+today.addEventListener('click', dueToday.today)

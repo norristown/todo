@@ -46,31 +46,14 @@ export function create() {
             const card = document.querySelector(`.card${i}`)
             
             if (sevenGlobal.get()[i].Finished[j]) {
-                console.log('if')
                 const task = card.querySelector(`.task${j}`)
                 task.classList.add('line')
-                console.log('query', task)
                 const priority = card.querySelector(`.priorityText${j}`)
                 priority.style.color = 'grey'
                 const priorityColor = card.querySelector(`#priorityColor${j}`)
                 priorityColor.style.color = 'grey'
-            } else {
-                console.log('else')
-                // const task = document.querySelector(`.task${j}`)
-                // task.style.textDecoration = 'none'
-                // const priority = document.querySelector(`.priorityText${j}`)
-                // priority.style.color = 'black'
-                // const priorityColor = document.querySelector(`#priorityColor${j}`)
-                // priorityColor.style.color = 'red'
-            }
+            } 
         }
-        
-        // const btnContainer = document.createElement('div')
-        // btnContainer.className = 'btnContainer'
-        // btnContainer.innerHTML = `
-        // <button class="add" id="${sevenGlobal.get()[i].Title}">Add Task</button>
-        // `
-        // cardDiv.appendChild(btnContainer)
     }
 
     function createIcon(iconPath) {

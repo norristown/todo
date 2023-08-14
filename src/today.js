@@ -1,11 +1,10 @@
 import globalArray from "./GlobalArray";
-import sevenGlobal from "./SevenGlobal";
-const create = require('./create7')
+const create = require('./createToday')
 import Project from "./Project";
 import Dom from "./Dom";
 import todayGlobal from "./TodayGlobal";
-export function next7Days() {
-    sevenGlobal.clear()
+export function today() {
+    todayGlobal.clear()
     let month;
     switch (new Date().getMonth()) {
         case 0:
@@ -54,14 +53,14 @@ export function next7Days() {
             'Priority': [],
             'Finished': []
         }
-        sevenGlobal.add(obj)
+        todayGlobal.add(obj)
         for (let j = 0; j < globalArray.get()[i]['Due Date'].length; j++) {
             const split = globalArray.get()[i]['Due Date'][j].split(' ')
             const getMonth = split[1]
             if (month === getMonth) {
                 const getDay = split[2].replace(',', '')
                 const today = new Date().getDate()
-                if (getDay - today <= 7) {
+                if (getDay - today <= 0) {
                     const taskArr = globalArray.get()[i].Description[j]
                     const dueDateArr = globalArray.get()[i]['Due Date'][j]
                     const priorityArr = globalArray.get()[i].Priority[j]
