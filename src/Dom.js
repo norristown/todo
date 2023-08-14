@@ -83,7 +83,7 @@ export default class Dom {
                     dueDateArr.push(formattedTime)
                     priorityArr.push(priority.value)
                     finishedArr.push(false)
-
+                    console.log(globalArray.get())
                     create.create()
                     const a = new Project
                     a.loadWindow()
